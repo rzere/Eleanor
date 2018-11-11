@@ -2,6 +2,9 @@ import json
 import requests
 import urllib2
 from bs4 import BeautifulSoup
+#import newspaper
+#import smtplib
+#from email.mime.text import MIMEText
 
 # We will create a class to be treated as an API for pulling data from the NYT API.
 class APIController:
@@ -14,6 +17,8 @@ class APIController:
 		self.article_url_map = {}
 		self.topic_url_map = {'politics': 'https://www.nytimes.com/section/politics'}
 		self.params = {'api-key': self.API_KEY}
+		#self.NYT_OBJ = newspaper.build('http://www.nytimes.com/')
+		
 
 	# Gets the top stories for a given time period (predefined to be 7 days), based on page view counts
 	def get_top_articles(self):

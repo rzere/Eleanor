@@ -4,7 +4,7 @@ def lambda_handler(event, context):
 	if event["session"]["new"]:
 		print('Starting new session!')
 	if event["request"]["type"] == "LaunchRequest":
-		on_launch(event["request"], event["session"])
+		return on_launch(event["request"], event["session"])
 	elif event["request"]["type"] == "IntentRequest":
 		return on_intent(event["request"], event["session"])
 	elif event["request"]["type"] == "SessionEndedRequest":
@@ -54,7 +54,7 @@ def headlines_intent_response():
 
 	session_attributes = {}
 	card_title = "TOP HEADLINES"
-	speech_output = "Here are the top headlines: " + ", ".join(headlines)
+	speech_output = "Here are the top headlines: " + ". ".join(headlines)
 	reprompt_text = "Would you like more information?"
 	should_end_session = False
 	return build_response(session_attributes, build_speechlet_response(
