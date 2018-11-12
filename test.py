@@ -26,8 +26,8 @@ def on_intent(intent_request, session):
 
     if intent_name == "HeadlinesIntent":
         return headlines_intent_response()
-    elif intent_name == "ArticlesIntent":
-    	return articles_intent_response()
+    elif intent_name == "PoliticsArticleIntent":
+    	return politics_article_intent_response()
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
@@ -79,12 +79,15 @@ def get_article_by_url(url):
 	article = controller.get_article_by_url(url)
 	session_attributes = {}
 	card_title = "FULL ARTICLE FROM URL"
-	speech_output = article
+	speech_output = 'Here is an article about politics: ' + article[:100]
 	reprompt_text = "Would you like to continue?"
 	should_end_session = False
 	return build_response(session_attributes, build_speechlet_response(
 		card_title, speech_output, reprompt_text, should_end_session))
 
+def politics_article_intent_response():
+	url = 'https://www.nytimes.com/2018/11/12/us/politics/north-korea-missile-bases.html'
+	return get_article_by_url(url)
 
 # Useful functionality for constructing json responses to be sent back to the user.
 
