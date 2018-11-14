@@ -1,5 +1,7 @@
 import nyt
 
+controller = nyt.APIController()
+
 def lambda_handler(event, context):
 	if event["session"]["new"]:
 		print('Starting new session!')
@@ -49,7 +51,6 @@ def launch_response():
 
 
 def headlines_intent_response():
-	controller = nyt.APIController()
 	headlines = controller.get_top_headlines()
 
 	session_attributes = {}
@@ -61,7 +62,6 @@ def headlines_intent_response():
 		card_title, speech_output, reprompt_text, should_end_session))
 
 def articles_intent_response():
-	controller = nyt.APIController()
 	articles = controller.get_top_articles()
 
 	title_to_url = {a['title']:a['url'] for a in articles}
@@ -75,7 +75,6 @@ def articles_intent_response():
 		card_title, speech_output, reprompt_text, should_end_session))
 
 def get_article_by_url(url):
-	controller = nyt.APIController()
 	article = controller.get_article_by_url(url)
 	session_attributes = {}
 	card_title = "FULL ARTICLE FROM URL"
