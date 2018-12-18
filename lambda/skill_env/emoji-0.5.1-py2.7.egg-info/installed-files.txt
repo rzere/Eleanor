@@ -1,0 +1,13 @@
+.
+../emoji/__init__.py
+../emoji/__init__.pyc
+../emoji/core.py
+../emoji/core.pyc
+../emoji/unicode_codes.py
+../emoji/unicode_codes.pyc
+PKG-INFO
+SOURCES.txt
+dependency_links.txt
+requires.txt
+top_level.txt
+zip-safe

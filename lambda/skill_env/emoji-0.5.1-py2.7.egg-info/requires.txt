@@ -1,0 +1,6 @@
+
+
+[dev]
+nose
+coverage
+coveralls
